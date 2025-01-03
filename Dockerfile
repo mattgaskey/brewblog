@@ -19,7 +19,7 @@ ENV \
     PYTHONFAULTHANDLER=1
 
 # Set work directory
-WORKDIR $APP_PATH
+WORKDIR /app
 
 # Install dependencies
 COPY requirements.txt .
