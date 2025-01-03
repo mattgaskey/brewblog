@@ -27,7 +27,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Expose the port the app runs on
-EXPOSE 8000
+EXPOSE 5000
 
 # Copy project files
 COPY . .
@@ -43,7 +43,7 @@ ARG APP_PATH
 ENV FLASK_APP=$APP_NAME \
     FLASK_ENV=development \
     FLASK_RUN_HOST=0.0.0.0 \
-    FLASK_RUN_PORT=8000
+    FLASK_RUN_PORT=5000
 
 ENTRYPOINT ["flask", "run"]
 
@@ -62,7 +62,7 @@ ENV \
 RUN apt-get update && apt-get install -y netcat-openbsd
 
 # gunicorn port. Naming is consistent with GCP Cloud Run
-ENV PORT=5000
+ENV PORT=8888
 # export APP_NAME as environment variable for the CMD
 ENV APP_NAME=$APP_NAME
 
