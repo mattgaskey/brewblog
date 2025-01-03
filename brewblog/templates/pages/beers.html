@@ -1,0 +1,15 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Brewblog | Beers{% endblock %}
+{% block content %}
+<div class="row shows">
+    {%for beer in beers %}
+    <div class="col-sm-4">
+        <div class="tile tile-beer">
+            <h5><a href="/beers/{{ beer.id }}">{{ beer.name }}</a></h5>
+            <p>pouring at</p>
+            <h5><a href="/breweries/{{ beer.brewery_id }}">{{ beer.brewery_name }}</a></h5>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

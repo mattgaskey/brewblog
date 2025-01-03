@@ -1,0 +1,13 @@
+flask==3.0.3
+flask-sqlalchemy==3.1.1
+flask-wtf==1.2.1
+postgres==4.0
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+sqlalchemy==2.0.31
+Flask-Login==0.6.3
+flask-migrate==4.0.7
+wtforms==3.1.2
+gunicorn==22.0.0
+elasticsearch==8.14
+phonenumbers==8.13.42

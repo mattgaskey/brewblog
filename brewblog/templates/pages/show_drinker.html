@@ -1,0 +1,60 @@
+{% extends 'layouts/main.html' %}
+{% block title %}{{ drinker.name }} | Drinker{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ drinker.name }}
+		</h1>
+		<p class="subtitle">
+			ID: {{ drinker.id }}
+		</p>
+		<p>
+			<i class="fas fa-globe-americas"></i> {{ drinker.city }}, {{ drinker.state }}
+		</p>
+  </div> 
+</div>
+<!-- TODO: Work out a way to store and show drinker's favorite breweries and/or beers -->
+<!-- <section>
+	<h2 class="monospace">{{ drinker.upcoming_shows_count }} Upcoming {% if drinker.upcoming_shows_count == 1 %}Show{% else %}Shows{% endif %}</h2>
+	<div class="row">
+		{%for show in drinker.upcoming_shows %}
+		<div class="col-sm-4">
+			<div class="tile tile-show">
+				<img src="{{ show.venue_image_link }}" alt="Show Venue Image" />
+				<h5><a href="/venues/{{ show.venue_id }}">{{ show.venue_name }}</a></h5>
+				<h6>{{ moment(show.start_time).format('LLLL') }}</h6>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+<section>
+	<h2 class="monospace">{{ drinker.past_shows_count }} Past {% if drinker.past_shows_count == 1 %}Show{% else %}Shows{% endif %}</h2>
+	<div class="row">
+		{%for show in drinker.past_shows %}
+		<div class="col-sm-4">
+			<div class="tile tile-show">
+				<img src="{{ show.venue_image_link }}" alt="Show Venue Image" />
+				<h5><a href="/venues/{{ show.venue_id }}">{{ show.venue_name }}</a></h5>
+				<h6>{{ moment(show.start_time).format('LLLL') }}</h6>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+
+<ul class="list-inline">
+  <li>
+    <a href="/artists/{{ drinker.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
+  </li>
+  <li>
+    <form action="{{ url_for('drinker.delete_artist', artist_id=drinker.id) }}" method="POST" class="d-inline">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-primary btn-lg">Delete</button>
+    </form>
+  </li>
+</ul> -->
+
+{% endblock %}
+

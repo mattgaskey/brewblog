@@ -1,0 +1,18 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Brewblog | Brewery Search{% endblock %}
+{% block content %}
+<h3>Number of search results for "{{ search_term }}": {{ results.count }}</h3>
+{% include 'forms/search.html' %}
+<ul class="items">
+	{% for brewery in results.data %}
+	<li>
+		<a href="/breweries/{{ brewery.id }}">
+			<i class="fas fa-music"></i>
+			<div class="item">
+				<h5>{{ brewery.name }}</h5>
+			</div>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+<div class="search-form">
+  <form method="get" action="{{ endpoint }}" class="form">
+    {{ form.hidden_tag() }}
+    <ul class="list-inline list-group">
+      <li>
+        {{ form.search_term(class_ = 'form-control', placeholder = placeholder) }}
+      </li>
+      <li>
+        <input type="submit" value="Search" class="btn btn-primary btn-block">
+      </li>
+    </ul>
+  </form>
+</div>

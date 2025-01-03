@@ -1,0 +1,58 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Brewery Search{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ brewery.name }}
+		</h1>
+		<p class="subtitle">
+			ID: {{ brewery.id }}
+		</p>
+		<div class="genres">
+			{% for genre in brewery.genres %}
+			<span class="genre">{{ genre }}</span>
+			{% endfor %}
+		</div>
+		<p>
+			<i class="fas fa-globe-americas"></i> {{ brewery.city }}, {{ brewery.state }}
+		</p>
+		<p>
+			<i class="fas fa-map-marker"></i> {% if brewery.address %}{{ brewery.address }}{% else %}No Address{% endif %}
+		</p>
+		<p>
+			<i class="fas fa-phone-alt"></i> {% if brewery.phone %}{{ brewery.phone }}{% else %}No Phone{% endif %}
+		</p>
+		<p>
+			<i class="fas fa-link"></i> {% if brewery.website_link %}<a href="{{ brewery.website_link }}" target="_blank">{{ brewery.website_link }}</a>{% else %}No Website{% endif %}
+		</p>
+	</div>
+</div>
+<section>
+	<h2 class="monospace">{{ brewery.beers_count }} Pouring {{ brewery.beers_count }} {% if brewery.beers_count == 1 %}Beer{% else %}Beers{% endif %}</h2>
+	<div class="row">
+		{%for beer in brewery.beers %}
+		<div class="col-sm-4">
+			<div class="tile tile-show">
+				<h5>{{ beer.name }}</h5>
+				<h6>{{ beer.style }}</h6>
+        <p>{{ beer.description }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+
+<!-- <ul class="list-inline">
+  <li>
+    <a href="/venues/{{ brewery.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
+  </li>
+  <li>
+    <form action="{{ url_for('brewery.delete_venue', venue_id=brewery.id) }}" method="POST" class="d-inline">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-primary btn-lg">Delete</button>
+    </form>
+  </li>
+</ul> -->
+{% endblock %}
+

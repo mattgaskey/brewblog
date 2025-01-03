@@ -1,0 +1,57 @@
+services:
+  db:
+    container_name: brewblog-db
+    image: postgres:14.1
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db:/var/lib/postgresql/data
+  app:
+    container_name: brewblog-app
+    build: .
+    environment:
+      FLASK_APP: brewblog.py
+      FLASK_ENV: development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - search
+  admin:
+    container_name: brewblog-admin
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  search:
+    container_name: brewblog-search
+    image: elasticsearch:8.14.0
+    environment:
+      - cluster.name=docker-cluster
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    depends_on:
+      - db
+    volumes:
+      - search:/usr/share/elasticsearch/data
+
+volumes:
+  db:
+  app:
+  search:
+    

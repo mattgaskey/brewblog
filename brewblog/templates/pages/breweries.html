@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Brewblog | Breweries{% endblock %}
+{% block content %}
+{% include 'forms/search.html' %}
+{% for area in areas %}
+<h3>{{ area.city }}, {{ area.state }}</h3>
+	<ul class="items">
+		{% for brewery in area.breweries %}
+		<li>
+			<a href="/breweries/{{ brewery.id }}">
+				<i class="fas fa-music"></i>
+				<div class="item">
+					<h5>{{ brewery.name }}</h5>
+				</div>
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+{% endfor %}
+{% endblock %}
