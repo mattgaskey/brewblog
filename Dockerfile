@@ -27,7 +27,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Expose the port the app runs on
-EXPOSE 5000
+EXPOSE 8000
 
 # Copy project files
 COPY . .
@@ -43,7 +43,7 @@ ARG APP_PATH
 ENV FLASK_APP=$APP_NAME \
     FLASK_ENV=development \
     FLASK_RUN_HOST=0.0.0.0 \
-    FLASK_RUN_PORT=5000
+    FLASK_RUN_PORT=8000
 
 ENTRYPOINT ["flask", "run"]
 
